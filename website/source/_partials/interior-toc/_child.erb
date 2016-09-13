@@ -1,0 +1,9 @@
+<% child = child.values.first %>
+<li>
+  <%= link_to child.full_header_text, "/#{I18n.locale}/#{child.path}" %>
+  <% if child.children.length > 0 %>
+    <ul>
+      <%= partial "_partials/interior-toc/child", collection: child.children %>
+    </ul>
+  <% end %>
+</li>

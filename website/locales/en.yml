@@ -1,0 +1,35 @@
+---
+en:
+  about: "About"
+  open_review: "Open Review"
+  code: "Code"
+  about_the_author: "About the Author"
+  privacy_and_consent: "Privacy & Consent"
+  privacy_and_consent_policy: "Privacy and Consent Policy"
+  buy_the_book: "Buy the book"
+  open_review_draft: "Open Review Draft"
+
+  machine_translated: "This translation was created by a computer."
+  cta_thanks: "Thanks! We'll let you know when the book is available for purchase."
+  let_me_know_when_book_for_sale: "Let me know when the book is for sale"
+  let_me_know_when_book_finished: "Let me know when the book is finished"
+  book_not_available_yet: "This book is not yet available for purchase. Please put your email address in the box below, and we'll let you know when it is."
+  receive_an_email_when_book_available: "Receive an email when the book is available for purchase"
+  subscribe: "Subscribe"
+  submit: "Submit"
+  close_this_message: "Close this message"
+  get_notified_by_email: "Get notified by email"
+  email_address: "Email address"
+
+  languages: "Languages"
+  machine_translations: "Machine Translations"
+
+  citation: Citation
+  if_you_would_like_to_cite: "If you would like to cite this manuscript, please cite it as:"
+
+  this_book_is_in_open_review: "This book is in <a href='{{ href }}' class='alert-link'>Open Review. <i class='glyphicon glyphicon-question-sign'></i></a>"
+  annotation_instructions: >
+    <ol>
+    <li>To add your annotation, select the text and then click the <i class="h-icon-annotate"></i> </li>
+    <li>To see the annotations of others, click <i class="h-icon-chevron-left"></i> in the upper right hand corner of the page.</li>
+    </ol>

@@ -1,0 +1,29 @@
+<% if next_page %>
+  <% content_for :header do %>
+    <link rel="prefetch" href="<%= url_for("/#{I18n.locale}/#{next_page.path}/") %>">
+  <% end %>
+<% end %>
+
+<% wrap_layout :base do %>
+  <div class="alert alert-warning" role="alert" data-alert-name="open-review">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <%= t(:this_book_is_in_open_review).gsub('{{ href }}', url_for("/#{I18n.locale}/open-review.html")) %>
+    <%= t(:annotation_instructions) %>
+  </div>
+  <% unless config[:human_translations].include? I18n.locale %>
+    <div class="alert alert-info" role="alert" data-alert-name="machine-translated_<%= I18n.locale %>">
+      <%= t(:machine_translated) %> <a href="<%= url_for("/#{I18n.locale}/machine-translations.html") %>" class="alert-link"><i class="glyphicon glyphicon-question-sign"></i></a>
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    </div>
+  <% end %>
+  <div class="book-html">
+    <%= yield %>
+  </div>
+  <% if current_page_data.try(:only_section_header) %>
+    <%= partial "_partials/interior-toc/main" %>
+  <% end %>
+
+  <%#= partial "bottom-cta" %>
+  <%#= partial "bottom-cta-alt" %>
+  <%= partial "_partials/page_navigation" %>
+<% end %>

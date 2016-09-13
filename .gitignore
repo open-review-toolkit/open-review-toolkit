@@ -5,3 +5,7 @@
 /vendor
 
 /output
+/website/build
+/website/.sass-cache
+/website/data
+/website/source/figures

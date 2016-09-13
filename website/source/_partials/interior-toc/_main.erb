@@ -1,0 +1,11 @@
+<% sections = sections_in_hierarchy %>
+<% section_number = current_page_section_number %>
+<% current_page_data.hierarchy.each do |ancestor| %>
+  <% sections = sections.select { |sec| sec.has_key?(ancestor) }.first.try(:values).try(:first).try(:children) %>
+<% end %>
+<% current_section = sections.select { |sec| sec.has_key?(section_number) }.first.try(:values).try(:first) %>
+<% if current_section and current_section.children.length > 0 %>
+  <ul>
+    <%= partial "_partials/interior-toc/child", collection: current_section.children %>
+  </ul>
+<% end %>
