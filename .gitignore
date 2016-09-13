@@ -1,0 +1,7 @@
+*.swp
+
+/.bundle
+/.vagrant
+/vendor
+
+/output
