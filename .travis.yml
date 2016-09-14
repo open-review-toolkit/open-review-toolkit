@@ -28,6 +28,8 @@ install:
 script:
 - make book
 - make site
+after_success:
+- bash scripts/deploy.sh
 deploy:
   provider: releases
   api_key:
@@ -37,3 +39,6 @@ deploy:
   on:
     tags: true
     repo: open-review-toolkit/open-review-toolkit
+env:
+  global:
+    secure: SGpAXThiJbptQzKTNqgdEc/RLYiaBdcjyFGxXZpcB23nK8Tcf/Kz1CtkOfWzOzLYzJrJYUsR3HveAQLr1ToKY80qECDZKgy6ZQztubysLI3vs1PirmGK2WVp5Z95nO5M22wHga9yvEOjLC0TH0QZ4FPETQr4f5uxRyrn8cKWaX8MoJmlPkOgW0sFw2qB3iIKaOdKL3ZGk2aIB4AyKTefMCaCgY6aBvCZLOoidhC2F4Ic/YXowmViMzXzeOhLg1iHy89auqUJLQ5DG3LksGMqrPyaCfsU1ZE+W9X0D0Ncl2bWqEuCeqTi6HB1zU+4zu2t2SsNyK/8PEHpZC1SKeDx9FiiKSczlmkSQ7Hs019P48zEmIovzJKLeSMqW/XPS1jTFSMKA+lNIxm46E3eBHKyfXOtX30FNuc50s2Yk4FHiJU8zFxs4/zjHGQgOSK+UH78fIHZajHC2xGYVrui0KlvDykROtjnANpiM8f7AGl1c53F/jk9jI6T6pzrWCcEjFQwVUWY4ErPy+F/1JpwZIYhK7V+nXplAfDR8dUiqY8akHGCOcQzIkp7NpigYe6oSHGJZaZktEnA52ltYf4z1iQrUsEiDHGGCREbF8ni8csyr7XAx30uIF/OO3SMnnOEijmLghHcyDmR69Xz9VjnbVkT5AYN5GTy9fnaiw4/K+/BZEg=
