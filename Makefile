@@ -47,7 +47,7 @@ FIGURES = $(wildcard figures/*)
 
 ALL = $(FIGURES) $(PDFS) $(HTML) $(DOCX) $(BOOKS)
 
-.PHONY: chapters all clean pdf html docx book webpage site figures cleanfigures
+.PHONY: chapters all clean pdf html docx book webpage site figures
 
 HUMAN_LANGUAGES = en
 MACHINE_LANGUAGES = 
