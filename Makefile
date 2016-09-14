@@ -36,6 +36,11 @@ PANDOC_CROSSREF_PATH = $(HASKELL_BIN_PATH)/pandoc-crossref
 PANDOC_CITEPROC_PREAMBLE_PATH = $(HASKELL_BIN_PATH)/pandoc-citeproc-preamble
 
 POST_FRONT_MATTER = support/post_front_matter.md
+CITEPROC_PREAMBLE = support/citeproc-preamble.tex
+LATEX_TEMPLATE = support/templates/default.latex
+DOCX_TEMPLATE = support/templates/default.docx
+HTML_TEMPLATE = support/templates/default.html
+INCLUDE_IN_HEADER = support/include-in-header
 
 
 PDFS=$(patsubst %.$(MEXT),$(BUILD_DIR)/%.pdf,$(CHAPTERS))
@@ -73,19 +78,21 @@ site: $(FIGURES) $(AUTO_JSON_FILES) $(LOCALE_YAML_FILES)
 
 PANDOC_PDF = pandoc \
 	-r markdown+footnotes \
-	--template=support/templates/default.latex \
+	--template=$(LATEX_TEMPLATE) \
 	--filter $(PANDOC_CROSSREF_PATH) \
 	--filter pandoc-citeproc --bibliography=$(BIB) \
-	--filter $(PANDOC_CITEPROC_PREAMBLE_PATH) -M citeproc-preamble=support/citeproc-preamble.tex \
+	--filter $(PANDOC_CITEPROC_PREAMBLE_PATH) -M citeproc-preamble=$(CITEPROC_PREAMBLE) \
 	-V geometry:"top=1in, bottom=1in, left=1.25in, right=1.25in" \
 	-V class:article \
 	-V fontsize:11pt \
 	-V fontfamily:lmodern \
-	-H support/include-in-header \
+	-H $(INCLUDE_IN_HEADER) \
 	--default-image-extension=pdf \
 	--toc \
 	--toc-depth=4 \
 	--number-section \
+
+PANDOC_PDF_DEPS = $(LATEX_TEMPLATE) $(BIB) $(CITEPROC_PREAMBLE) $(INCLUDE_IN_HEADER)
 
 PANDOC_DOCX = pandoc \
 	-r markdown+footnotes \
@@ -93,13 +100,15 @@ PANDOC_DOCX = pandoc \
 	--toc \
 	--toc-depth=4 \
 	--filter $(PANDOC_CROSSREF_PATH) \
-	--reference-docx=support/templates/default.docx \
+	--reference-docx=$(DOCX_TEMPLATE) \
 	--default-image-extension=svg \
 	--filter pandoc-citeproc --bibliography=$(BIB) \
 
+PANDOC_DOCX_DEPS = $(DOCX_TEMPLATE) $(BIB)
+
 PANDOC_HTML = pandoc \
 	-r markdown+footnotes+auto_identifiers+implicit_header_references \
-	--template=support/templates/default.html \
+	--template=$(HTML_TEMPLATE) \
 	--toc \
 	--toc-depth=4 \
 	--filter $(PANDOC_CROSSREF_PATH) \
@@ -110,19 +119,23 @@ PANDOC_HTML = pandoc \
 	--number-section \
 	--section-divs \
 
-output/$(BOOK_NAME_SLUG).tex: support/book-metadata.yml support/shared-metadata.yml $(FRONT_MATTER) $(POST_FRONT_MATTER) $(CHAPTERS)
+PANDOC_HTML_DEPS = $(HTML_TEMPLATE) $(BIB)
+
+PANDOC_BOOK_ARGS = support/book-metadata.yml support/shared-metadata.yml $(FRONT_MATTER) $(POST_FRONT_MATTER) $(CHAPTERS)
+
+output/$(BOOK_NAME_SLUG).tex: $(PANDOC_PDF_DEPS) $(PANDOC_BOOK_ARGS)
 	$(PANDOC_PDF) \
 	--chapters \
-	-s -S -o $@ $^
+	-s -S -o $@ $(PANDOC_BOOK_ARGS)
 
-output/$(BOOK_NAME_SLUG).pdf: support/book-metadata.yml support/shared-metadata.yml $(FRONT_MATTER) $(POST_FRONT_MATTER) $(CHAPTERS)
+output/$(BOOK_NAME_SLUG).pdf: $(PANDOC_PDF_DEPS) $(PANDOC_BOOK_ARGS)
 	$(PANDOC_PDF) \
 	--chapters \
-	-s -S -o $@ $^
+	-s -S -o $@ $(PANDOC_BOOK_ARGS)
 
-website/book-html/$(BOOK_NAME_SLUG).en.html: support/book-metadata.yml support/shared-metadata.yml $(FRONT_MATTER) $(POST_FRONT_MATTER) $(CHAPTERS)
+website/book-html/$(BOOK_NAME_SLUG).en.html: $(PANDOC_HTML_DEPS) $(PANDOC_BOOK_ARGS)
 	$(PANDOC_HTML) \
-	-s -S $^ | ./scripts/modify-citation-markup.rb > $@
+	-s -S $(PANDOC_BOOK_ARGS) | ./scripts/modify-citation-markup.rb > $@
 
 website/book-html/$(BOOK_NAME_SLUG).%.html: output/$(BOOK_NAME_SLUG)-translate.html
 	cat $< | TRANSLATE_TO="$*" ./scripts/translate.rb > $@
@@ -139,9 +152,9 @@ website/locales/en.yml:
 website/locales/%.yml: website/locales/en.yml
 	./scripts/translate-yml.rb $* $< > $@
 
-output/$(BOOK_NAME_SLUG).docx: support/book-metadata.yml support/shared-metadata.yml $(FRONT_MATTER) $(POST_FRONT_MATTER) $(CHAPTERS)
+output/$(BOOK_NAME_SLUG).docx: $(PANDOC_DOCX_DEPS) $(PANDOC_BOOK_ARGS)
 	$(PANDOC_DOCX) \
-	-s -S -o $@ $^
+	-s -S -o $@ $(PANDOC_BOOK_ARGS)
 
 $(BUILD_DIR)/%.tex: support/shared-metadata.yml %.$(MEXT) 99-references.md
 	$(PANDOC_PDF) \
