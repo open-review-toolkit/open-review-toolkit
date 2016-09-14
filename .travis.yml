@@ -1,0 +1,39 @@
+sudo: false
+language: c
+cache:
+  directories:
+  - "$HOME/.ghc"
+  - "$HOME/.cabal"
+  - "$HOME/.rvm/gems"
+before_cache:
+- rm -f $HOME/.cabal/logs/*
+- rm -f $HOME/.cabal/packages/hackage.haskell.org/build-reports.log
+addons:
+  apt:
+    sources:
+    - hvr-ghc
+    packages:
+    - ghc-7.10.3
+    - cabal-install-1.24
+    - texlive
+    - texlive-latex-extra
+    - lmodern
+before_install:
+- export PATH=$PATH:/opt/ghc/7.10.3/bin:/opt/cabal/1.24/bin:$HOME/.cabal/bin
+- travis_retry cabal update
+- rvm install 2.3.1
+install:
+- cabal install pandoc-1.17.0.2 pandoc-crossref-0.2.1.3 pandoc-citeproc-0.10.1 pandoc-citeproc-preamble-1.0.0
+- bundle install
+script:
+- make book
+- make site
+deploy:
+  provider: releases
+  api_key:
+    secure: hsx4Ujf8lV65KwoHZDer0g6ka+QHHOzESm8Ns+fE5MOrK63FikcU8UkHEHtWhk4QUBITc1J2uCVcZpO1HYuCu/AApGEjihAN1k/hMLPy6BYB5ZsR6aWktR2dDRF65y+zaCShUahBLGYCb86vu0Q55QUB+kJqwMCHzrfM1Z3665sA02gkvkyqgRSKsOAO8WXPe53fvL54cEYtd1Y0ceI6+GKtOpSyj/UMmDeAxHLIagsRUaNse3gaRpL1As19ZlYUTZIUgxoELmq16N1g4zEXJjifaaoVWtBicEfkS2IBuEDpjzWMt1C9Mfa9JG2YykPWdNrYXbVTZfYZ3ezZpLSbjWeXEDMH7FkCxVRC8K7dirMPjGN9rrniFUxWGy6QzSJ/n7wuCG9NIXwSsHCaYAUiY18YLOhT8/gH4CO7Np8WspGL3OQJRtipSzM8ZscrlXlz5iU+ovjbjVyRCYNI0vvA//I5V8Pe2By/sBknHuDYrbTnc41IYLfqs6LwDYnP1X1HWL02GtQDXuzI1F+8wKxHRU7EhEnXQ6KQYhOkm8O9fS3eoiSSDX01NfeNhUl2IN8o3ASAReFlWaEbUPWp9ErTR3GYonqmHJTJE+ey4mgDzAWFlc7ZdtxSuYuFrPI+KwLWrTeG9jBxc/dh0lJRqg3WOLe5acpUe24OCvzo48Eed0g=
+  file: output/sample-book.pdf
+  skip_cleanup: true
+  on:
+    tags: true
+    repo: open-review-toolkit/open-review-toolkit
