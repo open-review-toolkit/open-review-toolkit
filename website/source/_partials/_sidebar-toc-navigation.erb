@@ -6,9 +6,9 @@
   <% link_class = "active" if current_page_data and current_page_section_number == section_key %>
   <li>
     <% if section.children.length == 0 %>
-      <%= link_to section.full_header_text, "/#{I18n.locale}/#{section.path}", class: "#{link_class} no-children" %>
+      <%= link_to section.full_header_text, "/#{I18n.locale}/#{section.path}.html", class: "#{link_class} no-children" %>
     <% else %>
-      <% link_to "/#{I18n.locale}/#{section.path}", class: link_class do %>
+      <% link_to "/#{I18n.locale}/#{section.path}.html", class: link_class do %>
         <i class="glyphicon glyphicon-triangle-bottom <%= "collapsed" unless collapse_class == 'in' %>" data-toggle="collapse" data-target="<%= "##{section_key}_children" %>"></i>
         <%= section.full_header_text %>
       <% end %>
@@ -17,7 +17,7 @@
           <% child_key = c_hash.keys.first %>
           <% child = c_hash.values.first %>
           <% child_link_class = "active" if current_page_data and (current_page_data.hierarchy.include?(child_key) or current_page_section_number == child_key) %>
-          <li><%= link_to child.full_header_text, "/#{I18n.locale}/#{child.path}", class: child_link_class %></li>
+          <li><%= link_to child.full_header_text, "/#{I18n.locale}/#{child.path}.html", class: child_link_class %></li>
         <% end %>
       </ul>
     <% end %>
