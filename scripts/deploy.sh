@@ -20,7 +20,7 @@ git remote add upstream "https://$GH_TOKEN@github.com/open-review-toolkit/open-r
 git fetch upstream
 git reset upstream/gh-pages
 
-#echo "sample.openreviewtoolkit.org" > CNAME
+echo "sample.openreviewtoolkit.org" > CNAME
 
 touch .
 
