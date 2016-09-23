@@ -115,7 +115,7 @@ PANDOC_HTML = pandoc \
 	--filter pandoc-citeproc --bibliography=$(BIB) --metadata link-citations=true \
 	--default-image-extension=svg \
 	-M chapters \
-	-m \
+	--mathjax \
 	--number-section \
 	--section-divs \
 
