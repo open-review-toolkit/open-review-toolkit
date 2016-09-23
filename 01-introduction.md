@@ -28,4 +28,4 @@ When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
 
 $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$
 
-This paragraph does not have any formulas but should render the dollar sign properly in $5.
+This paragraph does not have any formulas but should render the dollar sign properly in $5 and $10.
