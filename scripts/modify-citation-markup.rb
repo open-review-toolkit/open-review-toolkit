@@ -6,6 +6,8 @@
 # to the reference(s) that this citation refers to. Second, it adds
 # data-ref-html, which is a concatentation of the full references that
 # this citations refers to.
+#
+# Input the HTML document via STDIN and output will be via STDOUT.
 
 require 'rubygems'
 require 'bundler/setup'

@@ -1,5 +1,16 @@
 #!/usr/bin/env ruby
 
+# This script processes an HTML file produced by pandoc has two outputs. The
+# first is a JSON file that contains metadata about the structure of the book.
+# Secondly, it creates an HTML file for each section in the original HTML file
+# and writes those files to the directory specified. The name and hierarchy of
+# a section determines the file name and path, as each sub-section is nested
+# within its parent.
+#
+# Example usage:
+#   ./scripts/split-sections.rb pandoc-output.html \
+#     directory/to/place/html/section/files > data.json
+
 require 'rubygems'
 require 'bundler/setup'
 require 'nokogiri'
