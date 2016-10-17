@@ -7,7 +7,7 @@ The mini table of contents that you see in the PDF is created by adding `\minito
 
 ## Tables {#sec:tables}
 
-You can create tables in your markdown files, and you can reference @tbl:always_on from the text.  For more on references see @sec:references.
+You can create tables in your markdown files, and you can reference @tbl:example_table from the text.  For more on references see @sec:references.
 
 | Header #1 | Header #2 |
 |-----------|-----------|
@@ -39,6 +39,6 @@ Citations to articles, books, and other materials are handled by BibTeX, and you
 
 You can make inline citiations like this: @anscombe_graphs_1973.  And, you can have citations come at the end of a sentence [@anscombe_graphs_1973].  For more on citation see the pandoc documentation: http://pandoc.org/.
 
-## References {#sec:references}
+## Cross referencing {#sec:cross-ref}
 
-References like the ones in the sections above are handled by pandoc-crossref.  You can read more about that software and its syntax at https://github.com/lierdakil/pandoc-crossref.
+Cross references like the ones in the sections above are handled by pandoc-crossref.  You can read more about that software and its syntax at https://github.com/lierdakil/pandoc-crossref.
