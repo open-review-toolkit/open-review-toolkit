@@ -7,7 +7,7 @@ The mini table of contents that you see in the PDF is created by adding `\minito
 
 ## Tables {#sec:tables}
 
-You can create tables in your markdown files, and you can reference @tbl:example_table from the text.  For more on references see @sec:references.
+You can create tables in your markdown files, and you can reference @tbl:example_table from the text.  For more on references see @sec:cross-ref.
 
 | Header #1 | Header #2 |
 |-----------|-----------|
