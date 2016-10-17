@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Sample Book - Introduction - 1.4 Formulas</title>
+    <title>Sample Book - Introduction - 1.5 Citations</title>
     <link href="/stylesheets/site-d52c534a.css" rel="stylesheet" />
     <base href="/">
-        <link rel="prefetch" href="/en/another-chapter/">
+        <link rel="prefetch" href="/en/introduction/references/">
 
     <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
   </head>
 
-  <body class="en en_introduction en_introduction_formulas en_introduction_formulas_index ">
+  <body class="en en_introduction en_introduction_citations en_introduction_citations_index ">
 
     <div id="wrapper">
       <!-- Navigation -->
@@ -64,7 +64,9 @@
           <li><a href="/en/introduction/mini-table-of-contents/">1.1 Mini Table of Contents</a></li>
           <li><a href="/en/introduction/tables/">1.2 Tables</a></li>
           <li><a href="/en/introduction/figures/">1.3 Figures</a></li>
-          <li><a href="/en/introduction/formulas/" class="active">1.4 Formulas</a></li>
+          <li><a href="/en/introduction/equations/">1.4 Equations</a></li>
+          <li><a href="/en/introduction/citations/" class="active">1.5 Citations</a></li>
+          <li><a href="/en/introduction/references/">1.6 References</a></li>
       </ul>
   </li>
   <li>
@@ -91,22 +93,25 @@
 
   </div>
   <div class="book-html">
-    <div id="formulas" class="section level2">
+    <div id="sec:citations" class="section level2">
 <h2>
-<span class="header-section-number">1.4</span> Formulas</h2>
-<p>When <span class="math inline">\(a \ne 0\)</span>, there are two solutions to <span class="math inline">\(ax^2 + bx + c = 0\)</span> and they are</p>
-<p><span class="math display">\[x = {-b \pm \sqrt{b^2-4ac} \over 2a}\]</span></p>
-<p>This paragraph does not have any formulas but should render the dollar sign properly in $5 and $10.</p>
+<span class="header-section-number">1.5</span> Citations</h2>
+<p>Citations to articles, books, and other materials are handled by BibTeX, and your .bibtex file should be stored in <code>support/sample-book.bibtex</code>. If you want to change the name of your BibTeX file you will need to change <code>Makefile</code>.</p>
+<p>You can make inline citiations like this: <span class="citation" data-ref-id='["#ref-anscombe_graphs_1973"]' data-ref-html='
+&lt;p&gt;Anscombe, F. J. 1973. “Graphs in Statistical Analysis.” &lt;em&gt;The American Statistician&lt;/em&gt; 27 (1): 17–21. doi:&lt;a href="https://doi.org/10.2307/2682899"&gt;10.2307/2682899&lt;/a&gt;.&lt;/p&gt;
+'>Anscombe (1973)</span>. And, you can have citations come at the end of a sentence <span class="citation" data-ref-id='["#ref-anscombe_graphs_1973"]' data-ref-html='
+&lt;p&gt;Anscombe, F. J. 1973. “Graphs in Statistical Analysis.” &lt;em&gt;The American Statistician&lt;/em&gt; 27 (1): 17–21. doi:&lt;a href="https://doi.org/10.2307/2682899"&gt;10.2307/2682899&lt;/a&gt;.&lt;/p&gt;
+'>(Anscombe 1973)</span>. For more on citation see the pandoc documentation: http://pandoc.org/.</p>
 </div>
   </div>
 
     <nav>
     <ul class="pager">
         <li class="previous">
-          <a href="/en/introduction/figures/">&laquo; Figures</a>
+          <a href="/en/introduction/equations/">&laquo; Equations</a>
         </li>
       <li class="next">
-        <a href="/en/another-chapter/">Another Chapter &raquo;</a>
+        <a href="/en/introduction/references/">References &raquo;</a>
       </li>
     </ul>
   </nav>
