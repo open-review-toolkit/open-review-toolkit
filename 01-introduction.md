@@ -5,27 +5,40 @@
 
 The mini table of contents that you see in the PDF is created by adding `\minitoc` to the markdown file after the header for the chapter.
 
-## Tables
+## Tables {#sec:tables}
 
-You can create tables in your markdown files as well.
+You can create tables in your markdown files, and you can reference @tbl:always_on from the text.  For more on references see @sec:references.
 
 | Header #1 | Header #2 |
 |-----------|-----------|
 | data | more data |
 | data 2 | more data 2|
 
-## Figures
+: Caption of example table. {#tbl:example_table}
+
+
+## Figures {#sec:figures}
 
 Any figures for your book should be added to the `figures/` directory.
 
-Here's a sample image below [@noaa_expl1676].
+@fig:anscombe shows Anscomb's quartet which was first proposed in @anscombe_graphs_1973.  
 
-![Operation Deep Slope 2007. Large brownish pink stalked anemone. Image ID: expl1676, Voyage To Inner Space - Exploring the Seas With NOAA Collect Location: Gulf of Mexico Credit: Image courtesy of Expedition to the Deep Slope 2007, NOAA-OE](figures/9737464118_052e4296aa_k.jpg){#fig:anemone}
+![Anscombe's Quartet, which was first proposed in @anscombe_graphs_1973. Image created by "Schultz" and used under a [Creative Commons license](https://commons.wikimedia.org/wiki/File:Anscombe%27s_quartet_3.svg).](figures/anscombes_quartet.png){#fig:anscombe}
 
-## Formulas
+## Equations {#sec:equations}
 
 When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
 
-$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$ {#eq:quad}
 
 This paragraph does not have any formulas but should render the dollar sign properly in $5 and $10.
+
+## Citations {#sec:citations}
+
+Citations to articles, books, and other materials are handled by BibTeX, and your .bibtex file should be stored in `support/sample-book.bibtex`.  If you want to change the name of your BibTeX file you will need to change `Makefile`.
+
+You can make inline citiations like this: @anscombe_graphs_1973.  And, you can have citations come at the end of a sentence [@anscombe_graphs_1973].  For more on citation see the pandoc documentation: http://pandoc.org/.
+
+## References {#sec:references}
+
+References like the ones in the sections above are handled by pandoc-crossref.  You can read more about that software and its syntax at https://github.com/lierdakil/pandoc-crossref.
