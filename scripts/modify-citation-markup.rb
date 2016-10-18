@@ -20,7 +20,7 @@ html_doc = Nokogiri::HTML(html)
 html_doc.css('.citation').each do |citation|
   links = citation.css('a')
   ref_ids = links.map { |l| l['href'] }
-  ref_htmls = links.map { |l| html_doc.css(l['href']).inner_html }
+  ref_htmls = links.map { |l| html_doc.css("[@id='#{l['href'].gsub(/^#/, '')}']").inner_html }
   citation['data-ref-id'] = ref_ids.to_json
   citation['data-ref-html'] = ref_htmls.join(" ")
   links.each do |link|
