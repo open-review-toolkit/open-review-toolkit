@@ -36,7 +36,7 @@ $(document).ready(function() {
   // Modal for citation link clicks.
   $(document).on('click', '.citation', function(ev) {
     var modal = $('#citation_modal');
-    var citation = $(ev.target);
+    var citation = $(ev.currentTarget);
     modal.find('.modal-body').html(citation.data('ref-html'));
     modal.modal('show');
   });
