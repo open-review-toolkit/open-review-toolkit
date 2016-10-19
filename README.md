@@ -17,7 +17,7 @@ Unfortunately, at the moment, the Open Review Toolkit only supports manuscripts 
 0. Download and install [Vagrant](https://www.vagrantup.com/).
 1. Download the soure code by either cloning the git repository or downloading the [latest release](https://github.com/open-review-toolkit/open-review-toolkit/releases/latest).
 2. Once you've cloned the git repository or extracted the release source code, open your favorite terminal and navigate to the directory the holds the source code. You should see several files and directories in this directory, including a file call `Vagrantfile`.
-3. From your terminal, run: `vagrant up`. The very first time you run this command it will download roughly 1.5GB of data, so it may take a few minutes or more depending on the speed of your internet connection.
+3. From your terminal, run: `vagrant up`. The very first time you run this command it will download the virtual machine image, roughly 1.5GB of data, so it may take a few minutes or more depending on the speed of your internet connection.
 4. Once the previous command has completed, run `vagrant ssh`. You are now inside the Vagrant VM, which includes all the dependencies for the project.
 5. `make book` will create a PDF file of the book and place it in the `output/` directory.
 6. `make site` will build an Open Review site from the book. After building the site, you can view it in your browser by visiting: http://0.0.0.0:17278/. This link only works on your local machine. See the [Hosting Your Site](#hosting-your-site) section before for how to publish your site publicly.
