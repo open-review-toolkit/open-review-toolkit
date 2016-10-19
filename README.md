@@ -18,11 +18,11 @@ As you make changes to the Markdown files that contain the content of your book,
 
 ## Modification Tips
 
-**Reminder:** after any of these modifications, you'll need to re-run the appropriate `make` command to re-build the PDF or site.
+**Reminder:** after you make any improvements to your book (by editing the Markdown files), you'll need to re-run the appropriate `make` command to re-build the PDF or site.
 
-The [sample site](http://sample.openreviewtoolkit.org/) includes some details on how to modify your site.
+The [sample site](http://sample.openreviewtoolkit.org/) includes some details on how to customize your site.
 
-In order configure the site to use your Google Analytics account, you must update the `ga_code` configuration item in `website/config.rb`.
+The Open Review websites are build for to be integrated with [Google Analytics](https://www.google.com/analytics/). In order configure the your Open Review website to use your Google Analytics account, you must update the `ga_code` configuration item in `website/config.rb`.
 
 ## Hosting Your Site
 
