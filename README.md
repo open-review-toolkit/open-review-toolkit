@@ -35,3 +35,7 @@ The Open Review websites are build for to be integrated with [Google Analytics](
 ## Hosting Your Site
 
 After running `make site`, the complete website is available as static HTML pages and assets in the `website/build/` directory. These can be copied over to the web host of your choice. You can also use a static web site host like [GitHub Pages](https://pages.github.com/).
+
+## Need Help?
+
+Feel free to join our [mailing list](https://groups.google.com/forum/#!forum/open-review-toolkit) and ask questions or see how other folks are using the project.
