@@ -10,7 +10,7 @@ The Open Review Toolkit contains 1) a template for a book written in Markdown an
 
 The virtual machine includes is basically a standard Linux box pre-installed with the open-source software that is needed to power the make file (e.g., [pandoc](http://pandoc.org/), [LaTeX](https://www.latex-project.org/)).  This virtual machine ensures that the Open Review Toolkit works in the same way on different computers.
 
-Unfortunately, at the moment, the Open Review Toolkit only suppots manuscripts in Markdown.  If your book is currently in LaTeX, Word, or some other format, you can convert it to Markdown.  Or, you can contact us.  We're interested in developing the codebase to support LaTeX and Word.
+Unfortunately, at the moment, the Open Review Toolkit only supports manuscripts in Markdown.  If your book is currently in LaTeX, Word, or some other format, you can convert it to Markdown.  Or, you can contact us.  We're interested in developing the codebase to support LaTeX and Word.
 
 ## Getting Started
 
