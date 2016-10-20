@@ -39,3 +39,7 @@ After running `make site`, the complete website is available as static HTML page
 ## Need Help?
 
 Feel free to join our [mailing list](https://groups.google.com/forum/#!forum/open-review-toolkit) and ask questions or see how other folks are using the project.
+
+## Acknowledgements
+
+The Open Review Toolkit is supported by a grant from the [Alfred P. Sloan Foundation](http://www.sloan.org).
