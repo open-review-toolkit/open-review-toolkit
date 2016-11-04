@@ -42,9 +42,17 @@ The sample site includes some email collection forms, which can interact with [G
 4. Click the "Preview" link for the form (eye icon).
 5. Copy URL of the form preview.
 6. Inside the Vagrant VM (via `vagrant ssh`), execute `./scripts/google-form-details.rb`.
-7. Paste URL from the form preview page when the script asks for it and press enter.
-8. Update the `config[:google_form_action]` setting in `website/config.rb` with the URL specified as the "Form action".
-9. Update the `config[:google_form_email_field]` setting in `website/config.rb` with the value associated with your email field from the script output.
+7. Paste URL from the form preview page when the script asks for it and press enter. You should see something like this:
+  ```
+vagrant@vagrant:~/open-review-toolkit$ ./scripts/google-form-details.rb 
+Enter public Google Form URL: https://docs.google.com/forms/d/e/1FAIpQLSdEFEOnkR_JeKdEIK-9MwG-5zP78qpiQSSBeM2DIKUYYqGyUw/viewform
+
+Form action: https://docs.google.com/forms/d/e/1FAIpQLSdEFEOnkR_JeKdEIK-9MwG-5zP78qpiQSSBeM2DIKUYYqGyUw/formResponse
+
+Email: entry.398259910
+  ```
+8. Update the `config[:google_form_action]` setting in `website/config.rb` with the "Form action" URL specified in the output.
+9. Update the `config[:google_form_email_field]` setting in `website/config.rb` with the value associated with your email field from the script output (`entry.398259910` in the sample above).
 
 After running `make site`, you should be able to test that everything is working and see your email address show up in the "Responses" tab of your Google Form. You can also download the responses as a CSV.
 
