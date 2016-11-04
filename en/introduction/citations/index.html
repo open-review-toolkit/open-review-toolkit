@@ -44,7 +44,7 @@
                   </ul>
               </li>
               <li>
-                  <a href="/en/buy-the-book.html">Buy the book</a>
+                  <a href="/en/buy-the-book/">Buy the book</a>
               </li>
           </ul>
 
@@ -105,6 +105,45 @@
 </div>
   </div>
 
+  
+
+
+<!-- Bottom CTA -->
+<div class="email-cta bottom-cta ">
+  <div class="cta-content cta-thanks hide">
+    <a href="#" class="close-bottom-cta"><i class="close-cta glyphicon glyphicon-remove"></i></a>
+    <h3>Thanks! We'll let you know when the book is available for purchase.</h3>
+  </div>
+  <div class="cta-content">
+    <div class="media">
+      <div class="media-left">
+        <img src="/images/book-35719412.gif" class="book-img" alt="Book" />
+      </div>
+      <div class="media-body">
+          <h3>Let me know when the book is for sale</h3>
+        <iframe name="hidden_iframe_email_cta" id="hidden_iframe_email_cta" style="display:none;"></iframe>
+        <form class="form-inline" action="https://docs.google.com/forms/d/e/XXXXXXXXXXXXXX/formResponse" method="POST" onsubmit="submitted_email_cta=true;" id="form_email_cta">
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="Email address" name="entry.XXXXXXXX" required/>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var submitted_email_cta = false;
+  document.getElementById('form_email_cta').target = 'hidden_iframe_email_cta';
+  document.getElementById('hidden_iframe_email_cta').onload = function() {
+    if (submitted_email_cta) {
+      $('.cta-content').toggleClass('hide');
+      document.cookie = "submittedEmail=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
+      ga('send', 'event', 'email', 'signup');
+    }
+  };
+</script>
+
     <nav>
     <ul class="pager">
         <li class="previous">
@@ -126,7 +165,7 @@
     <script defer async src="https://hypothes.is/embed.js"></script>
     <script>window.hypothesisConfig = function () { return {showHighlights: false}; };</script>
     <script src="/javascripts/jquery-bootstrap.min-14234db8.js"></script>
-    <script src="/javascripts/all-b8bd2391.js"></script>
+    <script src="/javascripts/all-d555483b.js"></script>
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
