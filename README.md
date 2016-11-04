@@ -24,6 +24,22 @@ The [sample site](http://sample.openreviewtoolkit.org/) includes some details on
 
 In order configure the site to use your Google Analytics account, you must update the `ga_code` configuration item in `website/config.rb`.
 
+### Setting up email collection with Google Forms
+
+The sample site includes some email collection forms, which can interact with [Google Forms](https://www.google.com/forms/about/). Here are the steps for setting that up:
+
+1. Create a new blank Google Form.
+2. Give the form a title.
+3. Create a question named "Email" that accepts a "Short answer".
+4. Click the "Preview" link for the form (eye icon).
+5. Copy URL of the form preview.
+6. Inside the Vagrant VM (via `vagrant ssh`), execute `./scripts/google-form-details.rb`.
+7. Paste URL from the form preview page when the script asks for it and press enter.
+8. Update the `config[:google_form_action]` setting in `website/config.rb` with the URL specified as the "Form action".
+9. Update the `config[:google_form_email_field]` setting in `website/config.rb` with the value associated with your email field from the script output.
+
+After running `make site`, you should be able to test that everything is working and see your email address show up in the "Responses" tab of your Google Form. You can also download the responses as a CSV.
+
 ## Publishing Your Site
 
 After running `make site`, the complete website is available as static HTML pages and assets in the `website/build/` directory. These can be copied over to the web host of your choice. You can also use a static web site host like [GitHub Pages](https://pages.github.com/).

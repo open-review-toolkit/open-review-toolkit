@@ -1,0 +1,9 @@
+---
+layout: base
+title: ":buy_the_book"
+---
+<h1><%= t(:buy_the_book) %></h1>
+
+<p><%= t(:book_not_available_yet) %></p>
+
+<%= partial "_partials/email-form", locals: { header_text: false, always_show: true, unique_id: "buy_the_book" } %>

@@ -1,0 +1,49 @@
+<% if not defined?(unique_id) %>
+  <% unique_id = "email_cta" %>
+<% end %>
+
+<% if not defined?(always_show) %>
+  <% always_show = false %>
+<% end %>
+
+<% if not defined?(header_text) %>
+  <% header_text = t(:let_me_know_when_book_for_sale) %>
+<% end %>
+
+<!-- Bottom CTA -->
+<div class="email-cta bottom-cta <%= "always-show" if always_show %>">
+  <div class="cta-content cta-thanks hide">
+    <a href="#" class="close-bottom-cta"><i class="close-cta glyphicon glyphicon-remove"></i></a>
+    <h3><%= t(:cta_thanks) %></h3>
+  </div>
+  <div class="cta-content">
+    <div class="media">
+      <div class="media-left">
+        <%= image_tag "book.gif", class: "book-img" %>
+      </div>
+      <div class="media-body">
+        <% if header_text %>
+          <h3><%= header_text %></h3>
+        <% end %>
+        <iframe name="hidden_iframe_<%= unique_id %>" id="hidden_iframe_<%= unique_id %>" style="display:none;"></iframe>
+        <form class="form-inline" action="<%= config[:google_form_action] %>" method="POST" onsubmit="submitted_<%= unique_id %>=true;" id="form_<%= unique_id %>">
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="<%= t(:email_address) %>" name="<%= config[:google_form_email_field] %>" required/>
+            <button type="submit" class="btn btn-primary"><%= t(:submit) %></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var submitted_<%= unique_id %> = false;
+  document.getElementById('form_<%= unique_id %>').target = 'hidden_iframe_<%= unique_id %>';
+  document.getElementById('hidden_iframe_<%= unique_id %>').onload = function() {
+    if (submitted_<%= unique_id %>) {
+      $('.cta-content').toggleClass('hide');
+      document.cookie = "submittedEmail=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
+      ga('send', 'event', 'email', 'signup');
+    }
+  };
+</script>

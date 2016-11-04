@@ -94,6 +94,15 @@ $(document).ready(function() {
       $el.remove();
     }
   });
+  // Hide all email asks if they've already submitted their email address.
+  if (document.cookie.replace(/(?:(?:^|.*;\s*)submittedEmail\s*\=\s*([^;]*).*$)|^.*$/, "$1") === "true") {
+    $('.email-cta').not('.always-show').addClass('hide');
+  }
+
+  $(document).on('click', '.close-bottom-cta', function(ev) {
+    ev.preventDefault();
+    $(ev.currentTarget).closest('.email-cta').addClass('hide');
+  });
 
   // Stash cookie with alert name if alert is closed.
   $('.alert[data-alert-name]').on('close.bs.alert', function(ev) {
