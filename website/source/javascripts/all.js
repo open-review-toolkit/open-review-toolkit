@@ -15,7 +15,6 @@ $(document).ready(function() {
       }
       window.annotator.on('annotationCreated', logEvent.bind(null, 'created'));
       window.annotator.on('annotationUpdated', logEvent.bind(null, 'updated'));
-      window.annotator.on('annotationDeleted', logEvent.bind(null, 'deleted'));
 
       $('button[name="sidebar-toggle"], button[name="highlight-visibility"]').on('click', function(ev) {
         window.ga('send', 'event', 'Annotation', ev.currentTarget.name + '-click');
