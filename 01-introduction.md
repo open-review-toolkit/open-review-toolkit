@@ -16,6 +16,13 @@ You can create tables in your markdown files, and you can reference @tbl:example
 
 : Caption of example table. {#tbl:example_table}
 
+## Lists {#sec:lists}
+
+Here's what a list looks like:
+
+1. Item #1.
+2. Item #2.
+3. Item #3.
 
 ## Figures {#sec:figures}
 

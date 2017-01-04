@@ -93,15 +93,17 @@ body {
     font-size: .9em;
     font-family: "times New Roman", Times, serif;
   }
-  p {
+  p, ul, ol {
     line-height: 1.7;
     margin-bottom: 30px;
-    &.caption {
-      text-align: center;
-    }
   }
-  blockquote p {
-    margin-bottom: 0;
+  p.caption {
+    text-align: center;
+  }
+  blockquote {
+    p, ul, ol {
+      margin-bottom: 0;
+    }
   }
   .section.level1 > h1 + blockquote, .section.level2 > h2 + blockquote, .section.level3 > h3 + blockquote, .section.level4 > h4 + blockquote {
     font-size: 18px;
