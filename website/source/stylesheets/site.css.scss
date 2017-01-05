@@ -93,9 +93,11 @@ body {
     font-size: .9em;
     font-family: "times New Roman", Times, serif;
   }
-  p, ul, ol {
-    line-height: 1.7;
-    margin-bottom: 30px;
+  .book-html {
+    p, ul, ol {
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
   }
   p.caption {
     text-align: center;
