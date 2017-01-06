@@ -98,14 +98,14 @@ body {
       line-height: 1.7;
       margin-bottom: 30px;
     }
+    & blockquote {
+      p, ul, ol {
+        margin-bottom: 0;
+      }
+    }
   }
   p.caption {
     text-align: center;
-  }
-  blockquote {
-    p, ul, ol {
-      margin-bottom: 0;
-    }
   }
   .section.level1 > h1 + blockquote, .section.level2 > h2 + blockquote, .section.level3 > h3 + blockquote, .section.level4 > h4 + blockquote {
     font-size: 18px;
