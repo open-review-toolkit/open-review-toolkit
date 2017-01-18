@@ -28,6 +28,7 @@ install:
 script:
 - make book
 - make site
+- make tests
 after_success:
 - bash scripts/deploy.sh
 deploy:
