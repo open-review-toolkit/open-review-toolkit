@@ -22,4 +22,16 @@ class TestSite < CapybaraTestCase
     assert_equal 200, page.status_code
     assert_equal "10px", page.evaluate_script("jQuery('#page-wrapper ul').css('marginBottom');")
   end
+
+  def test_blockquote_paragraph_margin
+    visit('/en/introduction/blockquotes/')
+    assert_equal 200, page.status_code
+    assert_equal "0px", page.evaluate_script("jQuery('blockquote p').css('marginBottom');")
+  end
+
+  def test_blockquote_list_margin
+    visit('/en/introduction/blockquotes/')
+    assert_equal 200, page.status_code
+    assert_equal "0px", page.evaluate_script("jQuery('blockquote ol').css('marginBottom');")
+  end
 end
