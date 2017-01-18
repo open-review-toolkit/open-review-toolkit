@@ -3,3 +3,41 @@
     - bundler: state=present chdir=/vagrant
       become: true
       become_user: vagrant
+    - name: download phantomjs
+      get_url:
+        url: https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-linux-x86_64.tar.bz2
+        dest: /home/vagrant/phantomjs-1.9.8-linux-x86_64.tar.bz2
+        checksum: sha256:a1d9628118e270f26c4ddd1d7f3502a93b48ede334b8585d11c1c3ae7bc7163a
+      become: true
+      become_user: vagrant
+    - name: create phantomjs directory
+      file:
+        path: /home/vagrant/local/phantomjs
+        state: directory
+        mode: 0755
+        owner: vagrant
+        group: vagrant
+    - name: extract phantomjs
+      unarchive:
+        src: /home/vagrant/phantomjs-1.9.8-linux-x86_64.tar.bz2
+        dest: /home/vagrant/local/phantomjs
+        creates: /home/vagrant/local/phantomjs/phantomjs-1.9.8-linux-x86_64/bin/phantomjs
+      become: true
+      become_user: vagrant
+
+    - name: create bin directory
+      file:
+        path: /home/vagrant/bin
+        state: directory
+        mode: 0755
+        owner: vagrant
+        group: vagrant
+
+    - name: create phantomjs symlink
+      file:
+        dest: /home/vagrant/bin/phantomjs
+        src: /home/vagrant/local/phantomjs/phantomjs-1.9.8-linux-x86_64/bin/phantomjs
+        state: link
+        mode: 0755
+        owner: vagrant
+        group: vagrant

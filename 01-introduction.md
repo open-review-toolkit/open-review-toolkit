@@ -46,6 +46,15 @@ Citations to articles, books, and other materials are handled by BibTeX, and you
 
 You can make inline citiations like this: @anscombe_graphs_1973.  And, you can have citations come at the end of a sentence [@anscombe_graphs_1973].  For more on citation see the pandoc documentation: http://pandoc.org/.
 
+## Blockquotes
+
+Here's a blockquote:
+
+> Here's a quote with a list.
+>
+> 1. Item 1
+> 2. Item 2
+
 ## Cross referencing {#sec:cross-ref}
 
 Cross references like the ones in the sections above are handled by pandoc-crossref.  You can read more about that software and its syntax at https://github.com/lierdakil/pandoc-crossref.
