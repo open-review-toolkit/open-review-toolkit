@@ -52,7 +52,7 @@ FIGURES = $(wildcard figures/*)
 
 ALL = $(FIGURES) $(PDFS) $(HTML) $(DOCX) $(BOOKS)
 
-.PHONY: chapters all clean pdf html docx book webpage site figures
+.PHONY: chapters all clean pdf html docx book webpage site figures tests
 
 HUMAN_LANGUAGES = en
 MACHINE_LANGUAGES = 
@@ -171,6 +171,9 @@ $(BUILD_DIR)/%.html: support/shared-metadata.yml %.$(MEXT) 99-references.md
 $(BUILD_DIR)/%.docx: support/shared-metadata.yml %.$(MEXT) 99-references.md
 	$(PANDOC_DOCX) \
 	-s -S -o $@ $^
+
+tests:
+	bundle exec ruby ./tests/tests.rb
 
 clean:
 	rm -f $(BUILD_DIR)/*
