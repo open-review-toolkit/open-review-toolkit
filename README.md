@@ -1,4 +1,4 @@
-# Open Review Toolkit
+# Open Review Toolkit [![Build Status](https://travis-ci.org/open-review-toolkit/open-review-toolkit.svg?branch=master)](https://travis-ci.org/open-review-toolkit/open-review-toolkit)
 
 The [Open Review Toolkit](http://www.openreviewtoolkit.org/) enables you to convert your book manuscript into a website that can be used for Open Review. During the Open Review process everyone can read your manuscript and help make it better, and you can collect valuable feedback to improve the manuscript and help launch your book.
 
