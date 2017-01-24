@@ -37,10 +37,14 @@ body {
 }
 
 .book-html {
-  .figure > img {
-    @extend .img-responsive;
-    @extend .img-thumbnail;
-    cursor: pointer;
+  .figure {
+    text-align: center;
+
+    & > img {
+      @extend .img-responsive;
+      @extend .img-thumbnail;
+      cursor: pointer;
+    }
   }
 
   .citation {

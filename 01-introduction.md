@@ -32,6 +32,8 @@ Any figures for your book should be added to the `figures/` directory.
 
 ![Anscombe's Quartet, which was first proposed in @anscombe_graphs_1973. Image created by "Schultz" and used under a [Creative Commons license](https://commons.wikimedia.org/wiki/File:Anscombe%27s_quartet_3.svg).](figures/anscombes_quartet.png){#fig:anscombe}
 
+![_Fountain_ by Marcel Duchamp.  _Fountain_ is an example of a Readymade, where an artist sees something that already exists in the world then creatively repurposes it for art. Photo of _Fountain_ by Alfred Stiglitz, 1917 (Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Duchamp_Fountaine.jpg)).](figures/duchamp_fountain.png){#fig:readymade_custommade}
+
 ## Equations {#sec:equations}
 
 When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are

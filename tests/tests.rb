@@ -34,4 +34,14 @@ class TestSite < CapybaraTestCase
     assert_equal 200, page.status_code
     assert_equal "0px", page.evaluate_script("jQuery('blockquote ol').css('marginBottom');")
   end
+
+  def test_figures_are_centered
+    visit('/en/introduction/figures/')
+    assert_equal 200, page.status_code
+    # test offset left to verify that image is not left aligned.
+    image_offset_left = page.evaluate_script("jQuery('.figure:last img').get(0).offsetLeft;")
+    parent_offset_left = page.evaluate_script("jQuery('.figure:last img').parent().get(0).offsetLeft;")
+    assert image_offset_left > parent_offset_left
+    assert_equal "center", page.evaluate_script("jQuery('.figure').css('text-align');")
+  end
 end
