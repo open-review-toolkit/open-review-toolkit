@@ -104,6 +104,23 @@ $(document).ready(function() {
     $(ev.currentTarget).closest('.email-cta').addClass('hide');
   });
 
+  // Enforce required for browsers that don't.
+  $(document).on('submit', 'form', function(ev) {
+    var form = $(ev.currentTarget);
+    var required = form.find('[required]');
+    var has_all_required = true;
+    if (required.length === 0) { return true; }
+
+    required.each(function(index, el) {
+      if ($(el).val() === "") {
+        has_all_required = false;
+      }
+    });
+    if (!has_all_required) {
+      ev.preventDefault();
+    }
+  });
+
   // Stash cookie with alert name if alert is closed.
   $('.alert[data-alert-name]').on('close.bs.alert', function(ev) {
     var target = $(ev.target);
