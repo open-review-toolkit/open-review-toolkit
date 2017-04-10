@@ -27,7 +27,7 @@
     <%= stylesheet_link_tag :site %>
     <base href="/">
     <%= yield_content :header %>
-    <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
   </head>
 
   <body class="<%= page_classes %> <%= current_page.data['addl_classes'].join(" ") if current_page.data['addl_classes'] %>">
