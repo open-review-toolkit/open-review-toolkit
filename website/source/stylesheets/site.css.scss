@@ -92,6 +92,28 @@ body {
   @media (min-width: $grid-float-breakpoint) {
     margin-left: 210px;
   }
+  .page-container {
+    position: relative;
+
+    .navigation-page-arrow {
+      position: absolute;
+      font-size: 30px;
+      a {
+        color: #ccc;
+      }
+      &.next {
+        right: -25px;
+      }
+      &.prev {
+        left: -35px;
+      }
+      .navigation-page-arrow-fixed {
+        margin-top: -21px;
+        position:fixed;
+        top: 50%;
+      }
+    }
+  }
   table caption, p.caption {
     color: #777;
     font-size: .9em;
