@@ -102,10 +102,16 @@ body {
         color: #ccc;
       }
       &.next {
-        right: -25px;
+        right: -5px;
+        @media (min-width: 830px) {
+          right: -25px;
+        }
       }
       &.prev {
-        left: -35px;
+        left: -45px;
+        @media (min-width: $grid-float-breakpoint) {
+          left: -35px;
+        }
       }
       .navigation-page-arrow-fixed {
         margin-top: -21px;
@@ -189,6 +195,9 @@ body {
 
 /* Top Navigation */
 
+.navbar {
+  z-index: 10;
+}
 .navbar-header {
   .navbar-brand {
     #tagline {
