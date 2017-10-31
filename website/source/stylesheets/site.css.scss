@@ -331,18 +331,36 @@ ul.alert-dropdown {
       text-indent: 18px;
     }
 
-    > li > ul {
+    ul {
       padding: 0;
-    > li > a {
-      display: block;
-      padding: 10px 15px 10px 38px;
-      text-decoration: none;
-      color: #337ab7;
-      &:hover {
+      a {
+        display: block;
+        text-decoration: none;
         color: #337ab7;
+        &:hover {
+          color: #337ab7;
+        }
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 15px;
       }
     }
-  }
+    > li > ul > li {
+      > a {
+        padding-left: 30px;
+      }
+
+      > ul > li {
+        > a {
+          padding-left: 45px;
+        }
+        > ul > li {
+          > a {
+            padding-left: 60px;
+          }
+        }
+      }
+    }
 }
 
 /* Flot Chart Containers */
