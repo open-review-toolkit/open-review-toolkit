@@ -9,14 +9,14 @@
   <% if prev_page %>
     <div class="navigation-page-arrow prev">
       <div class="navigation-page-arrow-fixed">
-        <%= link_to "<i class='glyphicon glyphicon-chevron-left'></i>", "/#{I18n.locale}/#{prev_page.path}.html" %>
+        <%= link_to "<i class='glyphicon glyphicon-menu-left'></i>", "/#{I18n.locale}/#{prev_page.path}.html" %>
       </div>
     </div>
   <% end %>
   <% if next_page %>
     <div class="navigation-page-arrow next">
       <div class="navigation-page-arrow-fixed">
-        <%= link_to "<i class='glyphicon glyphicon-chevron-right'></i>", "/#{I18n.locale}/#{next_page.path}.html" %>
+        <%= link_to "<i class='glyphicon glyphicon-menu-right'></i>", "/#{I18n.locale}/#{next_page.path}.html" %>
       </div>
     </div>
   <% end %>
