@@ -1,26 +1,3 @@
 <ul class="nav navbar-nav side-nav">
-<% sections_in_hierarchy.each do |s_hash| %>
-  <% section_key = s_hash.keys.first %>
-  <% section = s_hash.values.first %>
-  <% collapse_class = "in" if current_page_data and (current_page_data.hierarchy.include?(section_key) or current_page_section_number == section_key) %>
-  <% link_class = "active" if current_page_data and current_page_section_number == section_key %>
-  <li>
-    <% if section.children.length == 0 %>
-      <%= link_to section.full_header_text, "/#{I18n.locale}/#{section.path}.html", class: "#{link_class} no-children" %>
-    <% else %>
-      <% link_to "/#{I18n.locale}/#{section.path}.html", class: link_class do %>
-        <i class="glyphicon glyphicon-triangle-bottom <%= "collapsed" unless collapse_class == 'in' %>" data-toggle="collapse" data-target="<%= "##{section_key}_children" %>"></i>
-        <%= section.full_header_text %>
-      <% end %>
-      <ul class="collapse <%= collapse_class %>" id="<%= "#{section_key}_children" %>">
-        <% section.children.each do |c_hash| %>
-          <% child_key = c_hash.keys.first %>
-          <% child = c_hash.values.first %>
-          <% child_link_class = "active" if current_page_data and (current_page_data.hierarchy.include?(child_key) or current_page_section_number == child_key) %>
-          <li><%= link_to child.full_header_text, "/#{I18n.locale}/#{child.path}.html", class: child_link_class %></li>
-        <% end %>
-      </ul>
-    <% end %>
-  </li>
-<% end %>
+  <%= partial "_partials/sidebar-toc/section", collection: sections_in_hierarchy %>
 </ul>
