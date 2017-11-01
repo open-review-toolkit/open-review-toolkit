@@ -5,6 +5,21 @@
 <% end %>
 
 <% wrap_layout :base do %>
+  <div class="page-container">
+  <% if prev_page %>
+    <div class="navigation-page-arrow prev">
+      <div class="navigation-page-arrow-fixed">
+        <%= link_to "<i class='glyphicon glyphicon-menu-left'></i>", "/#{I18n.locale}/#{prev_page.path}.html" %>
+      </div>
+    </div>
+  <% end %>
+  <% if next_page %>
+    <div class="navigation-page-arrow next">
+      <div class="navigation-page-arrow-fixed">
+        <%= link_to "<i class='glyphicon glyphicon-menu-right'></i>", "/#{I18n.locale}/#{next_page.path}.html" %>
+      </div>
+    </div>
+  <% end %>
   <div class="alert alert-warning" role="alert" data-alert-name="open-review">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <%= t(:this_book_is_in_open_review).gsub('{{ href }}', url_for("/#{I18n.locale}/open-review.html")) %>
@@ -24,5 +39,5 @@
   <% end %>
 
   <%= partial "_partials/email-form" %>
-  <%= partial "_partials/page_navigation" %>
+  </div>
 <% end %>
