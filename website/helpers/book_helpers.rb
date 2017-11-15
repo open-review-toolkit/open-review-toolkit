@@ -24,11 +24,19 @@ module BookHelpers
   end
 
   def next_page
-    auto_lang.section_data[current_page_data.try(:next_page)]
+    next_p = auto_lang.section_data[current_page_data.try(:next_page)]
+    if next_p.try(:only_section_header)
+      next_p = auto_lang.section_data[next_p.try(:next_page)]
+    end
+    return next_p
   end
 
   def prev_page
-    auto_lang.section_data[current_page_data.try(:prev_page)]
+    prev_p = auto_lang.section_data[current_page_data.try(:prev_page)]
+    if prev_p.try(:only_section_header)
+      prev_p = auto_lang.section_data[prev_p.try(:prev_page)]
+    end
+    return prev_p
   end
 
   def first_section
