@@ -25,6 +25,7 @@
       <link rel="alternate machine-translated-from" hreflang="en" href="<%= url_for("/#{current_page.path.sub("#{I18n.locale}/", 'en/')}")%>">
     <% end %>
     <%= stylesheet_link_tag :site %>
+    <%= stylesheet_link_tag "https://cdn.hypothes.is/hypothesis/1.53.0/build/styles/icomoon.css" %>
     <base href="/">
     <%= yield_content :header %>
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
