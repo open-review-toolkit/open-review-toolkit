@@ -14,12 +14,12 @@ addons:
     - hvr-ghc
     packages:
     - ghc-8.2.1
-    - cabal-install-2.0.0.2
+    - cabal-install-2.0
     - texlive
     - texlive-latex-extra
     - lmodern
 before_install:
-- export PATH=$PATH:/opt/ghc/8.2.1/bin:/opt/cabal/1.24/bin:$HOME/.cabal/bin
+- export PATH=$PATH:/opt/ghc/8.2.1/bin:/opt/cabal/2.0/bin:$HOME/.cabal/bin
 - travis_retry cabal update
 - rvm install 2.3.4
 install:
