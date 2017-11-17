@@ -23,7 +23,7 @@ before_install:
 - travis_retry cabal update
 - rvm install 2.3.4
 install:
-- cabal install 'Cabal-2.0.0.2' pandoc-2.0.2 pandoc-crossref-0.3.0.0-beta pandoc-citeproc-0.12.1 pandoc-citeproc-preamble-1.2.3
+- cabal install 'Cabal-2.0.0.2' pandoc-2.0.2 pandoc-crossref pandoc-citeproc-0.12.1 pandoc-citeproc-preamble-1.2.3
 - bundle install --path vendor/bundle
 script:
 - make book
