@@ -2,9 +2,10 @@ module BookHelpers
   def current_page_key
     key = current_page.url
     if current_page.options[:locale]
-      key.sub!("/#{current_page.options[:locale]}/", '')
+      key.sub!("#{config[:http_prefix].chomp('/')}/#{current_page.options[:locale]}/", '')
     end
-    key.sub(/^\//, '').chomp('/')
+    r = Regexp.new(/^#{config[:http_prefix]}/)
+    key.sub(r, '').chomp('/')
   end
 
   def auto_lang
