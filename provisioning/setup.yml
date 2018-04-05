@@ -1,6 +1,6 @@
 - hosts: 127.0.0.1
   tasks:
-    - bundler: state=present chdir=/vagrant
+    - bundler: state=present chdir=/vagrant executable=~/.rbenv/versions/2.4.4/bin/bundle
       become: true
       become_user: vagrant
     - name: download phantomjs
