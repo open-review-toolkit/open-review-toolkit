@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "open-review-toolkit/open-review-toolkit"
-  config.vm.box_version = "0.0.1"
+  config.vm.box_version = "0.0.2"
 
   config.vm.network "forwarded_port", guest: 80, host: 17278, auto_correct: true
 
