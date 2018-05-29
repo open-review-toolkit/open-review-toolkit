@@ -125,17 +125,17 @@ PANDOC_BOOK_ARGS = support/book-metadata.yml support/shared-metadata.yml $(FRONT
 
 output/$(BOOK_NAME_SLUG).tex: $(PANDOC_PDF_DEPS) $(PANDOC_BOOK_ARGS)
 	$(PANDOC_PDF) \
-	--chapters \
-	-s -S -o $@ $(PANDOC_BOOK_ARGS)
+	--top-level-division=chapter \
+	-s -o $@ $(PANDOC_BOOK_ARGS)
 
 output/$(BOOK_NAME_SLUG).pdf: $(PANDOC_PDF_DEPS) $(PANDOC_BOOK_ARGS)
 	$(PANDOC_PDF) \
-	--chapters \
-	-s -S -o $@ $(PANDOC_BOOK_ARGS)
+	--top-level-division=chapter \
+	-s -o $@ $(PANDOC_BOOK_ARGS)
 
 website/book-html/$(BOOK_NAME_SLUG).en.html: $(PANDOC_HTML_DEPS) $(PANDOC_BOOK_ARGS)
 	$(PANDOC_HTML) \
-	-s -S $(PANDOC_BOOK_ARGS) | ./scripts/modify-citation-markup.rb > $@
+	-s $(PANDOC_BOOK_ARGS) | ./scripts/modify-citation-markup.rb > $@
 
 website/book-html/$(BOOK_NAME_SLUG).%.html: output/$(BOOK_NAME_SLUG)-translate.html
 	cat $< | TRANSLATE_TO="$*" ./scripts/translate.rb > $@
@@ -154,23 +154,23 @@ website/locales/%.yml: website/locales/en.yml
 
 output/$(BOOK_NAME_SLUG).docx: $(PANDOC_DOCX_DEPS) $(PANDOC_BOOK_ARGS)
 	$(PANDOC_DOCX) \
-	-s -S -o $@ $(PANDOC_BOOK_ARGS)
+	-s -o $@ $(PANDOC_BOOK_ARGS)
 
 $(BUILD_DIR)/%.tex: support/shared-metadata.yml %.$(MEXT) 99-references.md
 	$(PANDOC_PDF) \
-	-s -S -o $@ $^
+	-s -o $@ $^
 
 $(BUILD_DIR)/%.pdf: support/shared-metadata.yml %.$(MEXT) 99-references.md
 	$(PANDOC_PDF) \
-	-s -S -o $@ $^
+	-s -o $@ $^
 
 $(BUILD_DIR)/%.html: support/shared-metadata.yml %.$(MEXT) 99-references.md
 	$(PANDOC_HTML) \
-	-s -S -o $@ $^
+	-s -o $@ $^
 
 $(BUILD_DIR)/%.docx: support/shared-metadata.yml %.$(MEXT) 99-references.md
 	$(PANDOC_DOCX) \
-	-s -S -o $@ $^
+	-s -o $@ $^
 
 tests:
 	bundle exec ruby ./tests/tests.rb

@@ -13,17 +13,17 @@ addons:
     sources:
     - hvr-ghc
     packages:
-    - ghc-7.10.3
-    - cabal-install-1.24
+    - ghc-8.4.2
+    - cabal-install-2.2
     - texlive
     - texlive-latex-extra
     - lmodern
 before_install:
-- export PATH=$PATH:/opt/ghc/7.10.3/bin:/opt/cabal/1.24/bin:$HOME/.cabal/bin
+- export PATH=$PATH:/opt/ghc/8.4.2/bin:/opt/cabal/2.2/bin:$HOME/.cabal/bin
 - travis_retry cabal update
 - rvm install 2.4.4
 install:
-- cabal install Cabal-1.24.2.0 pandoc-1.19.2.4 pandoc-crossref pandoc-citeproc pandoc-citeproc-preamble pandoc-sidenote
+- cabal install Cabal-2.2.0.1 pandoc-2.2 pandoc-crossref pandoc-citeproc pandoc-citeproc-preamble pandoc-sidenote
 - bundle install --path vendor/bundle
 script:
 - make book
