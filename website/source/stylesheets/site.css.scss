@@ -37,7 +37,7 @@ body {
 }
 
 .book-html {
-  .figure {
+  .figure, figure {
     text-align: center;
 
     & > img {
@@ -121,13 +121,13 @@ body {
       }
     }
   }
-  table caption, p.caption {
+  table caption, p.caption, figcaption {
     color: #777;
     font-size: .9em;
     font-family: "times New Roman", Times, serif;
   }
   .book-html {
-    p, ul, ol {
+    p, ul, ol, figcaption {
       line-height: 1.7;
       margin-bottom: 30px;
     }
@@ -137,7 +137,7 @@ body {
       }
     }
   }
-  p.caption {
+  p.caption, figcaption {
     text-align: center;
   }
   .section.level1 > h1 + blockquote, .section.level2 > h2 + blockquote, .section.level3 > h3 + blockquote, .section.level4 > h4 + blockquote {

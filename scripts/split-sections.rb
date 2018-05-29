@@ -58,13 +58,13 @@ section_data = {}
 # Extract sections from HTML document. Extract deepest nested sections first.
 levels = [4, 3, 2, 1]
 levels.each do |level|
-  doc.css(".section.level#{level}").each do |section|
+  doc.css("section.level#{level}").each do |section|
     section_id = cleanup_section_id(section.attribute('id'))
     section_header = section.css('h1, h2, h3, h4, h5, h6')[0]
     only_section_header = section_header.text.strip == section.text.strip
     section_header_text = get_section_header_text(section_header)
     section_number = get_section_number_or_id(section)
-    section_ancestors = section.ancestors('.section')
+    section_ancestors = section.ancestors('section')
     hierarchy = section_ancestors.map {|s| cleanup_section_id(s.attribute('id').to_s) }.reverse
     hierarchy_section_numbers = section_ancestors.map {|s| get_section_number_or_id(s) }.reverse
 
