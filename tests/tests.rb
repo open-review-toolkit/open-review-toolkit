@@ -14,7 +14,7 @@ class TestSite < CapybaraTestCase
   def test_book_list
     visit('/en/introduction/lists/')
     assert_equal 200, page.status_code
-    assert_equal "30px", page.evaluate_script("jQuery('.section ol').css('marginBottom');")
+    assert_equal "30px", page.evaluate_script("jQuery('section ol').css('marginBottom');")
   end
 
   def test_intro_toc
@@ -39,9 +39,9 @@ class TestSite < CapybaraTestCase
     visit('/en/introduction/figures/')
     assert_equal 200, page.status_code
     # test offset left to verify that image is not left aligned.
-    image_offset_left = page.evaluate_script("jQuery('.figure:last img').get(0).offsetLeft;")
-    parent_offset_left = page.evaluate_script("jQuery('.figure:last img').parent().get(0).offsetLeft;")
+    image_offset_left = page.evaluate_script("jQuery('figure:last img').get(0).offsetLeft;")
+    parent_offset_left = page.evaluate_script("jQuery('figure:last img').parent().get(0).offsetLeft;")
     assert image_offset_left > parent_offset_left
-    assert_equal "center", page.evaluate_script("jQuery('.figure').css('text-align');")
+    assert_equal "center", page.evaluate_script("jQuery('figure').css('text-align');")
   end
 end
