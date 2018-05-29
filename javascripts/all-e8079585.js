@@ -41,10 +41,10 @@ $(document).ready(function() {
   });
 
   // Modal for larger images on image click.
-  $(document).on('click', '.book-html .figure img', function(ev) {
+  $(document).on('click', '.book-html .figure img, .book-html figure img', function(ev) {
     var modal = $('#image_modal');
     var image = $(ev.target);
-    var caption = image.siblings('.caption');
+    var caption = image.siblings('.caption, figcaption');
     modal.find('.modal-body').html(image.clone().addClass('img-responsive'));
     modal.find('.modal-footer').html(caption.clone());
     modal.modal('show');
