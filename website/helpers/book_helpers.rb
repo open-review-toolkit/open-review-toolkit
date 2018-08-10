@@ -4,15 +4,39 @@ module BookHelpers
     if current_page.options[:locale]
       key.sub!("#{config[:http_prefix].chomp('/')}/#{current_page.options[:locale]}/", '')
     end
+    edition = current_page_edition
+    if edition
+      key.sub!("#{edition}", '')
+    end
     r = Regexp.new(/^#{config[:http_prefix]}/)
     key.sub(r, '').chomp('/')
   end
 
+  def current_page_prefix
+    [current_page.options[:locale] || config[:human_translations].first, current_page_edition || default_edition].compact.join("/")
+  end
+
+  def default_edition
+    config[:editions].first
+  end
+
+  def current_page_edition
+    url_paths = current_page.url.split('/')
+    url_paths[2] if config[:editions].include? url_paths[2]
+  end
+
   def auto_lang
-    if current_page.options[:locale] and data["auto_#{current_page.options[:locale]}"]
-      return data["auto_#{current_page.options[:locale]}"]
+    edition = current_page_edition
+    if edition
+      d = data[edition]
     else
-      return data["auto_en"]
+      d = data[default_edition]
+    end
+
+    if current_page.options[:locale] and data["auto_#{current_page.options[:locale]}"]
+      return d["auto_#{current_page.options[:locale]}"]
+    else
+      return d["auto_en"]
     end
   end
 

@@ -11,6 +11,7 @@ page '/*.txt', layout: false
 
 config[:layout] = 'book'
 config[:human_translations] = [:en]
+config[:editions] = ['open-review']
 config[:ga_code] = 'UA-XXXXXXXX-X'
 config[:google_form_action] = 'https://docs.google.com/forms/d/e/XXXXXXXXXXXXXX/formResponse'
 config[:google_form_email_field] = 'entry.XXXXXXXX'

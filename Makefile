@@ -14,6 +14,7 @@
 ##	formats that you want to keep!
 
 BOOK_NAME_SLUG = sample-book
+EDITION := open-review
 .DEFAULT_GOAL := chapters
 .PRECIOUS: website/book-html/$(BOOK_NAME_SLUG).%.html
 
@@ -57,7 +58,9 @@ ALL = $(FIGURES) $(PDFS) $(HTML) $(DOCX) $(BOOKS)
 HUMAN_LANGUAGES = en
 MACHINE_LANGUAGES = 
 LANGUAGES = $(HUMAN_LANGUAGES) $(MACHINE_LANGUAGES)
-AUTO_JSON_FILES = $(patsubst %, website/data/auto_%.json, $(LANGUAGES))
+HTML_OUTPUT_DIR := website/source/localizable/$(EDITION)
+AUTO_JSON_DIR := website/data/$(EDITION)
+AUTO_JSON_FILES = $(patsubst %, $(AUTO_JSON_DIR)/auto_%.json, $(LANGUAGES))
 LOCALE_YAML_FILES = $(patsubst %, website/locales/%.yml, $(LANGUAGES))
 
 chapters: $(FIGURES) $(PDFS) $(HTML) $(DOCX)
@@ -70,7 +73,10 @@ docx:	$(FIGURES) $(DOCX)
 book:   $(FIGURES) $(BOOKS)
 webpage: $(FIGURES) website/book-html/$(BOOK_NAME_SLUG).en.html
 
-site: $(FIGURES) $(AUTO_JSON_FILES) $(LOCALE_YAML_FILES)
+sitedeps: $(AUTO_JSON_FILES) $(LOCALE_YAML_FILES)
+	rsync -av --delete figures website/source/
+
+site: sitedeps
 	rsync -av --delete figures website/source/
 	# cd website && bundle exec middleman build --no-clean --glob '*en/{about-the-author,code,open-review,privacy,machine-translations}/index.html'
 	# ./scripts/translate-one-off-pages.rb website/ $(MACHINE_LANGUAGES)
@@ -140,8 +146,14 @@ website/book-html/$(BOOK_NAME_SLUG).en.html: $(PANDOC_HTML_DEPS) $(PANDOC_BOOK_A
 website/book-html/$(BOOK_NAME_SLUG).%.html: output/$(BOOK_NAME_SLUG)-translate.html
 	cat $< | TRANSLATE_TO="$*" ./scripts/translate.rb > $@
 
-website/data/auto_%.json: website/book-html/$(BOOK_NAME_SLUG).%.html
-	LANGUAGE='$*' ./scripts/split-sections.rb $< website/source/localizable/ > $@
+$(AUTO_JSON_DIR):
+	mkdir -p $(AUTO_JSON_DIR)
+
+$(HTML_OUTPUT_DIR):
+	mkdir -p $(HTML_OUTPUT_DIR)
+
+$(AUTO_JSON_DIR)/auto_%.json: website/book-html/$(BOOK_NAME_SLUG).%.html | $(AUTO_JSON_DIR) $(HTML_OUTPUT_DIR)
+	LANGUAGE='$*' ./scripts/split-sections.rb $< $(HTML_OUTPUT_DIR)/ > $@
 
 output/$(BOOK_NAME_SLUG)-translate.html: website/book-html/$(BOOK_NAME_SLUG).en.html
 	./scripts/add-notranslate.rb $^ > $@

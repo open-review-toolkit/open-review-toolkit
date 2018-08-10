@@ -1,6 +1,6 @@
 <% child = child.values.first %>
 <li>
-  <%= link_to child.full_header_text, "/#{I18n.locale}/#{child.path}.html" %>
+  <%= link_to child.full_header_text, "/#{current_page_prefix}/#{child.path}.html" %>
   <% if child.children.length > 0 %>
     <ul>
       <%= partial "_partials/interior-toc/child", collection: child.children %>
