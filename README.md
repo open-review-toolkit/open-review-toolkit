@@ -66,8 +66,8 @@ Open Review Toolkit supports having multiple editions for a book. For example,
 you may want to first publish an "open-review" edition and then later publish
 the first edition of the book. To add an additional edition:
 
-1. Update the `EDITION` variable in the `Makefile to have the URL slug you want
-   to use for your new edition.
+1. Update the `EDITION` variable in the `Makefile` to have the URL slug you
+   want to use for your new edition.
 
 2. Add this same slug to the beginning of the list of editions in
    `website/config.rb`.
