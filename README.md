@@ -60,6 +60,18 @@ After running `make site`, you should be able to test that everything is working
 
 After running `make site`, the complete website is available as static HTML pages and assets in the `website/build/` directory. These can be copied over to the web host of your choice. You can also use a static web site host like [GitHub Pages](https://pages.github.com/).
 
+## Multiple Editions
+
+Open Review Toolkit supports having multiple editions for a book. For example,
+you may want to first publish an "open-review" edition and then later publish
+the first edition of the book. To add an additional edition:
+
+1. Update the `EDITION` variable in the `Makefile` to have the URL slug you
+   want to use for your new edition.
+
+2. Add this same slug to the beginning of the list of editions in
+   `website/config.rb`.
+
 ## Need Help?
 
 Feel free to join our [mailing list](https://groups.google.com/forum/#!forum/open-review-toolkit) and ask questions or see how other folks are using the project.

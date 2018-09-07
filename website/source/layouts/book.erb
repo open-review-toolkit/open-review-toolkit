@@ -1,6 +1,6 @@
 <% if next_page %>
   <% content_for :header do %>
-    <link rel="prefetch" href="<%= url_for("/#{I18n.locale}/#{next_page.path}/") %>">
+    <link rel="prefetch" href="<%= url_for("/#{current_page_prefix}/#{next_page.path}/") %>">
   <% end %>
 <% end %>
 
@@ -9,14 +9,14 @@
   <% if prev_page %>
     <div class="navigation-page-arrow prev">
       <div class="navigation-page-arrow-fixed">
-        <%= link_to "<i class='glyphicon glyphicon-menu-left'></i>", "/#{I18n.locale}/#{prev_page.path}.html" %>
+        <%= link_to "<i class='glyphicon glyphicon-menu-left'></i>", "/#{current_page_prefix}/#{prev_page.path}.html" %>
       </div>
     </div>
   <% end %>
   <% if next_page %>
     <div class="navigation-page-arrow next">
       <div class="navigation-page-arrow-fixed">
-        <%= link_to "<i class='glyphicon glyphicon-menu-right'></i>", "/#{I18n.locale}/#{next_page.path}.html" %>
+        <%= link_to "<i class='glyphicon glyphicon-menu-right'></i>", "/#{current_page_prefix}/#{next_page.path}.html" %>
       </div>
     </div>
   <% end %>

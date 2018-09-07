@@ -2,11 +2,12 @@
 <% section = section.values.first %>
 <% collapse_class = "in" if current_page_data and (current_page_data.hierarchy.include?(section_key) or current_page_section_number == section_key) %>
 <% link_class = "active" if current_page_data and current_page_section_number == section_key %>
+<!-- <%= current_page_prefix %> -->
 <li>
   <% if section.children.length == 0 %>
-    <%= link_to section.full_header_text, "/#{I18n.locale}/#{section.path}.html", class: "#{link_class} no-children" %>
+    <%= link_to section.full_header_text, "/#{current_page_prefix}/#{section.path}.html", class: "#{link_class} no-children" %>
   <% else %>
-    <% link_to "/#{I18n.locale}/#{section.path}.html", class: link_class do %>
+    <% link_to "/#{current_page_prefix}/#{section.path}.html", class: link_class do %>
       <i class="glyphicon glyphicon-triangle-bottom <%= "collapsed" unless collapse_class == 'in' %>" data-toggle="collapse" data-target="<%= "##{section_key.gsub(/\./, '_')}_children" %>"></i>
       <%= section.full_header_text %>
     <% end %>

@@ -3,12 +3,12 @@
     <ul class="pager">
       <% if prev_page %>
         <li class="previous">
-          <%= link_to "&laquo; #{prev_page.header}", "/#{I18n.locale}/#{prev_page.path}.html" %>
+          <%= link_to "&laquo; #{prev_page.header}", "/#{current_page_prefix}/#{prev_page.path}.html" %>
         </li>
       <% end %>
       <% if next_page %>
       <li class="next">
-        <%= link_to "#{next_page.header} &raquo;", "/#{I18n.locale}/#{next_page.path}.html" %>
+        <%= link_to "#{next_page.header} &raquo;", "/#{current_page_prefix}/#{next_page.path}.html" %>
       </li>
       <% end %>
     </ul>
