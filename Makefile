@@ -118,6 +118,7 @@ PANDOC_DOCX = pandoc \
 PANDOC_DOCX_DEPS = $(DOCX_TEMPLATE) $(BIB)
 
 PANDOC_MD_TO_HTML_DEPS = $(HTML_TEMPLATE) $(BIB)
+PANDOC_MD_BOOK_ARGS = support/book-metadata.yml support/shared-metadata.yml $(FRONT_MATTER) $(POST_FRONT_MATTER) $(CHAPTERS)
 PANDOC_MD_TO_HTML = pandoc \
 	-r markdown+footnotes+auto_identifiers+implicit_header_references \
 	--template=$(HTML_TEMPLATE) \
@@ -130,7 +131,6 @@ PANDOC_MD_TO_HTML = pandoc \
 	--mathjax \
 	--number-section \
 	--section-divs \
-PANDOC_MD_BOOK_ARGS = support/book-metadata.yml support/shared-metadata.yml $(FRONT_MATTER) $(POST_FRONT_MATTER) $(CHAPTERS)
 
 PANDOC_LATEX_TO_HTML_DEPS = $(HTML_TEMPLATE) $(BIB)
 PANDOC_LATEX_TO_HTML = pandoc \
