@@ -15,6 +15,7 @@
 
 BOOK_NAME_SLUG = sample-book
 EDITION := open-review
+SOURCE_FORMAT?=MD
 .DEFAULT_GOAL := chapters
 .PRECIOUS: website/book-html/$(BOOK_NAME_SLUG).%.html
 
@@ -22,8 +23,12 @@ EDITION := open-review
 MEXT = md
 
 ## All markdown files in the working directory
-FRONT_MATTER = $(sort $(wildcard _[0-9][0-9]-*.$(MEXT)))
-CHAPTERS = $(sort $(wildcard [0-9][0-9]-*.$(MEXT)))
+MD_FRONT_MATTER = $(sort $(wildcard _[0-9][0-9]-*.$(MEXT)))
+MD_CHAPTERS = $(sort $(wildcard [0-9][0-9]-*.$(MEXT)))
+
+FRONT_MATTER = $($(SOURCE_FORMAT)_FRONT_MATTER)
+CHAPTERS?= $($(SOURCE_FORMAT)_CHAPTERS)
+
 BUILD_DIR = output
 
 ## Location of Pandoc support files.
@@ -112,7 +117,8 @@ PANDOC_DOCX = pandoc \
 
 PANDOC_DOCX_DEPS = $(DOCX_TEMPLATE) $(BIB)
 
-PANDOC_HTML = pandoc \
+PANDOC_MD_TO_HTML_DEPS = $(HTML_TEMPLATE) $(BIB)
+PANDOC_MD_TO_HTML = pandoc \
 	-r markdown+footnotes+auto_identifiers+implicit_header_references \
 	--template=$(HTML_TEMPLATE) \
 	--toc \
@@ -124,10 +130,41 @@ PANDOC_HTML = pandoc \
 	--mathjax \
 	--number-section \
 	--section-divs \
+PANDOC_MD_BOOK_ARGS = support/book-metadata.yml support/shared-metadata.yml $(FRONT_MATTER) $(POST_FRONT_MATTER) $(CHAPTERS)
 
-PANDOC_HTML_DEPS = $(HTML_TEMPLATE) $(BIB)
+PANDOC_LATEX_TO_HTML_DEPS = $(HTML_TEMPLATE) $(BIB)
+PANDOC_LATEX_TO_HTML = pandoc \
+	-r latex+auto_identifiers \
+	--template=$(HTML_TEMPLATE) \
+	--toc \
+	--toc-depth=4 \
+	--filter $(PANDOC_CROSSREF_PATH) \
+	--filter pandoc-citeproc --bibliography=$(BIB) --metadata link-citations=true \
+	--default-image-extension=svg \
+	-M chapters \
+	--mathjax \
+	--number-section \
+	--section-divs \
 
-PANDOC_BOOK_ARGS = support/book-metadata.yml support/shared-metadata.yml $(FRONT_MATTER) $(POST_FRONT_MATTER) $(CHAPTERS)
+PANDOC_DOCX_BOOK_ARGS = $(CHAPTERS)
+PANDOC_DOCX_TO_HTML_DEPS = $(HTML_TEMPLATE)
+PANDOC_DOCX_TO_HTML = pandoc \
+	-r docx+auto_identifiers \
+	--template=$(HTML_TEMPLATE) \
+	--toc \
+	--toc-depth=4 \
+	--filter $(PANDOC_CROSSREF_PATH) \
+	--filter pandoc-citeproc --metadata link-citations=true \
+	--default-image-extension=svg \
+	-M chapters \
+	--mathjax \
+	--section-divs \
+	--extract-media=. \
+
+PANDOC_HTML_DEPS = $(PANDOC_$(SOURCE_FORMAT)_TO_HTML_DEPS)
+PANDOC_HTML = $(PANDOC_$(SOURCE_FORMAT)_TO_HTML)
+
+PANDOC_BOOK_ARGS = $(PANDOC_$(SOURCE_FORMAT)_BOOK_ARGS)
 
 output/$(BOOK_NAME_SLUG).tex: $(PANDOC_PDF_DEPS) $(PANDOC_BOOK_ARGS)
 	$(PANDOC_PDF) \
