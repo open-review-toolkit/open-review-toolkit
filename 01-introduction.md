@@ -48,6 +48,24 @@ Citations to articles, books, and other materials are handled by BibTeX, and you
 
 You can make inline citiations like this: @anscombe_graphs_1973.  And, you can have citations come at the end of a sentence [@anscombe_graphs_1973].  For more on citation see the pandoc documentation: http://pandoc.org/.
 
+## Footnotes
+
+Here is a footnote reference,[^1] and another.[^longnote]
+
+[^1]: Here is the footnote.
+
+[^longnote]: Here's one with multiple blocks.
+
+    Subsequent paragraphs are indented to show that they
+belong to the previous footnote.
+
+    The whole paragraph can be indented, or just the first
+    line.  In this way, multi-paragraph footnotes work like
+    multi-paragraph list items.
+
+This paragraph won't be part of the note, because it
+isn't indented.
+
 ## Blockquotes
 
 Here's a blockquote:
