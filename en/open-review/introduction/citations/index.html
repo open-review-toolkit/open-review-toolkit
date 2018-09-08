@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,15 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Sample Book - Buy the book</title>
+    <title>Sample Book - Introduction - 1.6 Citations</title>
     <link href="/stylesheets/site-b568523f.css" rel="stylesheet" />
     <link href="https://cdn.hypothes.is/hypothesis/1.53.0/build/styles/icomoon.css" rel="stylesheet" />
     <base href="/">
-    
+        <link rel="prefetch" href="/en/open-review/introduction/footnotes/">
+
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
   </head>
 
-  <body class="en en_buy-the-book en_buy-the-book_index ">
+  <body class="en en_open-review en_open-review_introduction en_open-review_introduction_citations en_open-review_introduction_citations_index ">
 
     <div id="wrapper">
       <!-- Navigation -->
@@ -60,9 +62,9 @@
 </li>
 <!-- en/open-review -->
 <li>
-<a href="/en/open-review/introduction/">      <i class="glyphicon glyphicon-triangle-bottom collapsed" data-toggle="collapse" data-target="#1_children"></i>
+<a href="/en/open-review/introduction/">      <i class="glyphicon glyphicon-triangle-bottom " data-toggle="collapse" data-target="#1_children"></i>
       1 Introduction
-</a>    <ul class="collapse " id="1_children">
+</a>    <ul class="collapse in" id="1_children">
       <!-- en/open-review -->
 <li>
     <a href="/en/open-review/introduction/mini-table-of-contents/" class=" no-children">1.1 Mini Table of Contents</a>
@@ -85,7 +87,7 @@
 </li>
 <!-- en/open-review -->
 <li>
-    <a href="/en/open-review/introduction/citations/" class=" no-children">1.6 Citations</a>
+    <a href="/en/open-review/introduction/citations/" class="active no-children">1.6 Citations</a>
 </li>
 <!-- en/open-review -->
 <li>
@@ -142,15 +144,41 @@
 
       </nav>
       <div id="page-wrapper">
-        <h1>Buy the book</h1>
+          <div class="page-container">
+    <div class="navigation-page-arrow prev">
+      <div class="navigation-page-arrow-fixed">
+        <a href="/en/open-review/introduction/equations/"><i class='glyphicon glyphicon-menu-left'></i></a>
+      </div>
+    </div>
+    <div class="navigation-page-arrow next">
+      <div class="navigation-page-arrow-fixed">
+        <a href="/en/open-review/introduction/footnotes/"><i class='glyphicon glyphicon-menu-right'></i></a>
+      </div>
+    </div>
+  <div class="alert alert-warning" role="alert" data-alert-name="open-review">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    This book is in <a href='/en/open-review/' class='alert-link'>Open Review. <i class='glyphicon glyphicon-question-sign'></i></a>
+    <ol> <li>To add your annotation, select the text and then click the <i class="h-icon-annotate"></i> </li> <li>To see the annotations of others, click <i class="h-icon-chevron-left"></i> in the upper right hand corner of the page.</li> </ol>
 
-<p>This book is not yet available for purchase. Please put your email address in the box below, and we'll let you know when it is.</p>
+  </div>
+  <div class="book-html">
+    <section id="sec:citations" class="level2">
+<h2>
+<span class="header-section-number">1.6</span> Citations</h2>
+<p>Citations to articles, books, and other materials are handled by BibTeX, and your .bibtex file should be stored in <code>support/sample-book.bibtex</code>. If you want to change the name of your BibTeX file you will need to change <code>Makefile</code>.</p>
+<p>You can make inline citiations like this: <span class="citation" data-cites="anscombe_graphs_1973" data-ref-id='["#ref-anscombe_graphs_1973"]' data-ref-html='
+&lt;p&gt;Anscombe, F. J. 1973. “Graphs in Statistical Analysis.” &lt;em&gt;The American Statistician&lt;/em&gt; 27 (1): 17–21. &lt;a href="https://doi.org/10.2307/2682899" class="uri"&gt;https://doi.org/10.2307/2682899&lt;/a&gt;.&lt;/p&gt;
+'>Anscombe (1973)</span>. And, you can have citations come at the end of a sentence <span class="citation" data-cites="anscombe_graphs_1973" data-ref-id='["#ref-anscombe_graphs_1973"]' data-ref-html='
+&lt;p&gt;Anscombe, F. J. 1973. “Graphs in Statistical Analysis.” &lt;em&gt;The American Statistician&lt;/em&gt; 27 (1): 17–21. &lt;a href="https://doi.org/10.2307/2682899" class="uri"&gt;https://doi.org/10.2307/2682899&lt;/a&gt;.&lt;/p&gt;
+'>(Anscombe 1973)</span>. For more on citation see the pandoc documentation: http://pandoc.org/.</p>
+</section>
+  </div>
 
-
+  
 
 
 <!-- Bottom CTA -->
-<div class="email-cta bottom-cta always-show">
+<div class="email-cta bottom-cta ">
   <div class="cta-content cta-thanks hide">
     <a href="#" class="close-bottom-cta"><i class="close-cta glyphicon glyphicon-remove"></i></a>
     <h3>Thanks! We'll let you know when the book is available for purchase.</h3>
@@ -161,8 +189,9 @@
         <img src="/images/book-35719412.gif" class="book-img" alt="Book" />
       </div>
       <div class="media-body">
-        <iframe name="hidden_iframe_buy_the_book" id="hidden_iframe_buy_the_book" style="display:none;"></iframe>
-        <form class="form-inline" action="https://docs.google.com/forms/d/e/XXXXXXXXXXXXXX/formResponse" method="POST" onsubmit="submitted_buy_the_book=true;" id="form_buy_the_book">
+          <h3>Let me know when the book is for sale</h3>
+        <iframe name="hidden_iframe_email_cta" id="hidden_iframe_email_cta" style="display:none;"></iframe>
+        <form class="form-inline" action="https://docs.google.com/forms/d/e/XXXXXXXXXXXXXX/formResponse" method="POST" onsubmit="submitted_email_cta=true;" id="form_email_cta">
           <div class="form-group">
             <input type="email" class="form-control" placeholder="Email address" name="entry.XXXXXXXX" required/>
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -173,10 +202,10 @@
   </div>
 </div>
 <script>
-  var submitted_buy_the_book = false;
-  document.getElementById('form_buy_the_book').target = 'hidden_iframe_buy_the_book';
-  document.getElementById('hidden_iframe_buy_the_book').onload = function() {
-    if (submitted_buy_the_book) {
+  var submitted_email_cta = false;
+  document.getElementById('form_email_cta').target = 'hidden_iframe_email_cta';
+  document.getElementById('hidden_iframe_email_cta').onload = function() {
+    if (submitted_email_cta) {
       $('.cta-content').toggleClass('hide');
       document.cookie = "submittedEmail=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
       ga('send', 'event', 'email', 'signup');
@@ -184,6 +213,7 @@
   };
 </script>
 
+  </div>
 
       </div>
     </div>
