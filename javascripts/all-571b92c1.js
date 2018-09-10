@@ -41,14 +41,29 @@ $(document).ready(function() {
     modal.modal('show');
   });
 
-  // Modal for larger images on image click.
-  $(document).on('click', '.book-html .figure img, .book-html figure img', function(ev) {
+  function openImageModal(image) {
     var modal = $('#image_modal');
-    var image = $(ev.target);
+    if (image.attr('id')) {
+      window.location.hash = image.attr('id');
+    }
     var caption = image.siblings('.caption, figcaption');
     modal.find('.modal-body').html(image.clone().addClass('img-responsive'));
     modal.find('.modal-footer').html(caption.clone());
     modal.modal('show');
+  }
+
+  (function() {
+    var image = $('img[id="' + window.location.hash.replace(/^#/, '') + '"]:first');
+    if (image.length > 0) {
+      openImageModal(image);
+    }
+  })();
+
+
+  // Modal for larger images on image click.
+  $(document).on('click', '.book-html .figure img, .book-html figure img', function(ev) {
+    var image = $(ev.target);
+    openImageModal(image);
   });
 
   // Keyboard shortcuts for navigating to previous and next page.
