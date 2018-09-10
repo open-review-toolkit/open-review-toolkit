@@ -150,7 +150,7 @@ PANDOC_LATEX_TO_HTML = pandoc \
 
 PANDOC_DOCX_BOOK_ARGS = $(CHAPTERS)
 PANDOC_DOCX_TO_HTML_DEPS = $(HTML_TEMPLATE)
-DOCX_HTML_CLEANUP = ./scripts/modify-citation-markup.rb | ./scripts/docx-images.rb
+DOCX_HTML_CLEANUP = ./scripts/modify-citation-markup.rb | ./scripts/docx-images.rb | ./scripts/remove-extra-sections.rb
 PANDOC_DOCX_TO_HTML = pandoc \
 	-r docx+auto_identifiers \
 	--template=$(HTML_TEMPLATE) \
