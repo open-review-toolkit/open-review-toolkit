@@ -120,6 +120,7 @@ PANDOC_DOCX_DEPS = $(DOCX_TEMPLATE) $(BIB)
 
 PANDOC_MD_TO_HTML_DEPS = $(HTML_TEMPLATE) $(BIB)
 PANDOC_MD_BOOK_ARGS = support/book-metadata.yml support/shared-metadata.yml $(FRONT_MATTER) $(POST_FRONT_MATTER) $(CHAPTERS)
+MD_HTML_CLEANUP = ./scripts/modify-citation-markup.rb
 PANDOC_MD_TO_HTML = pandoc \
 	-r markdown+footnotes+auto_identifiers+implicit_header_references \
 	--template=$(HTML_TEMPLATE) \
@@ -149,6 +150,7 @@ PANDOC_LATEX_TO_HTML = pandoc \
 
 PANDOC_DOCX_BOOK_ARGS = $(CHAPTERS)
 PANDOC_DOCX_TO_HTML_DEPS = $(HTML_TEMPLATE)
+DOCX_HTML_CLEANUP = ./scripts/modify-citation-markup.rb | ./scripts/docx-images.rb
 PANDOC_DOCX_TO_HTML = pandoc \
 	-r docx+auto_identifiers \
 	--template=$(HTML_TEMPLATE) \
@@ -164,6 +166,7 @@ PANDOC_DOCX_TO_HTML = pandoc \
 
 PANDOC_HTML_DEPS = $(PANDOC_$(SOURCE_FORMAT)_TO_HTML_DEPS)
 PANDOC_HTML = $(PANDOC_$(SOURCE_FORMAT)_TO_HTML)
+HTML_CLEANUP = $($(SOURCE_FORMAT)_HTML_CLEANUP)
 
 PANDOC_BOOK_ARGS = $(PANDOC_$(SOURCE_FORMAT)_BOOK_ARGS)
 
@@ -179,7 +182,7 @@ output/$(BOOK_NAME_SLUG).pdf: $(PANDOC_PDF_DEPS) $(PANDOC_BOOK_ARGS)
 
 website/book-html/$(BOOK_NAME_SLUG).en.html: $(PANDOC_HTML_DEPS) $(PANDOC_BOOK_ARGS)
 	$(PANDOC_HTML) \
-	-s $(PANDOC_BOOK_ARGS) | ./scripts/modify-citation-markup.rb > $@
+	-s $(PANDOC_BOOK_ARGS) | $(HTML_CLEANUP) > $@
 
 website/book-html/$(BOOK_NAME_SLUG).%.html: output/$(BOOK_NAME_SLUG)-translate.html
 	cat $< | TRANSLATE_TO="$*" ./scripts/translate.rb > $@
