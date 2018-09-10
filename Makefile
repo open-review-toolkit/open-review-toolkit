@@ -80,6 +80,7 @@ webpage: $(FIGURES) website/book-html/$(BOOK_NAME_SLUG).en.html
 
 sitedeps: $(AUTO_JSON_FILES) $(LOCALE_YAML_FILES)
 	rsync -av --delete figures website/source/
+	rsync -av --delete media website/source/
 
 site: sitedeps
 	rsync -av --delete figures website/source/

@@ -42,7 +42,7 @@ activate :i18n, :mount_at_root => false, :langs => [:en]
 configure :build do
   # Minify CSS on build
   activate :minify_css
-  activate :asset_hash, ignore: ["figures/*", "fonts/bootstrap/*"]
+  activate :asset_hash, ignore: ["figures/*", "media/*", "fonts/bootstrap/*"]
 
   # Minify Javascript on build
   # activate :minify_javascript
