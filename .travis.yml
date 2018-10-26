@@ -17,6 +17,8 @@ addons:
     - cabal-install-2.2
     - texlive
     - texlive-latex-extra
+    - texlive-xetex
+    - fonts-wqy-zenhei
     - lmodern
 before_install:
 - export PATH=$PATH:/opt/ghc/8.4.2/bin:/opt/cabal/2.2/bin:$HOME/.cabal/bin
