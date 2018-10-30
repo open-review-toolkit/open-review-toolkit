@@ -12,3 +12,7 @@ CJKoptions:
 * 汉语
 * 漢語
 * and more!
+
+## 漢語 {.unnumbered}
+
+Unnumbered section header test.

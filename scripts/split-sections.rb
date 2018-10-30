@@ -15,6 +15,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'nokogiri'
 require 'json'
+require 'cgi'
 
 def get_section_header_text(section_header)
   sh = section_header.dup
@@ -32,7 +33,7 @@ def get_toc_section_number_or_id(link)
   if toc_sn[0]
     return toc_sn[0].text
   else
-    return cleanup_section_id(link.attribute('href').to_s.gsub('#', ''))
+    return cleanup_section_id(CGI::unescape(link.attribute('href').to_s.gsub('#', '')))
   end
 end
 
