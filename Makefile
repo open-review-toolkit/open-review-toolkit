@@ -94,6 +94,7 @@ PANDOC_PDF = pandoc \
 	--filter $(PANDOC_CROSSREF_PATH) \
 	--filter pandoc-citeproc --bibliography=$(BIB) \
 	--filter $(PANDOC_CITEPROC_PREAMBLE_PATH) -M citeproc-preamble=$(CITEPROC_PREAMBLE) \
+	--pdf-engine=xelatex \
 	-V geometry:"top=1in, bottom=1in, left=1.25in, right=1.25in" \
 	-V class:article \
 	-V fontsize:11pt \
