@@ -30,7 +30,7 @@ As you make changes to the Markdown files that contain the content of your book,
 
 The [sample site](http://sample.openreviewtoolkit.org/) includes some details on how to customize your site.
 
-The Open Review websites are build to be integrated with [Google Analytics](https://www.google.com/analytics/). In order to configure your Open Review website to use your Google Analytics account, you must update the `ga_code` configuration item in `website/config.rb`.
+The Open Review websites are built to be integrated with [Google Analytics](https://www.google.com/analytics/). In order to configure your Open Review website to use your Google Analytics account, you must update the `ga_code` configuration item in `website/config.rb`.
 
 ### Setting up email collection with Google Forms
 
