@@ -100,7 +100,7 @@ GEM
       websocket-driver (>= 0.2.0)
     power_assert (1.1.1)
     public_suffix (3.0.2)
-    rack (2.0.4)
+    rack (2.0.6)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
     rb-fsevent (0.10.3)
