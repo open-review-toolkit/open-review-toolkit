@@ -8,12 +8,12 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
-    autoprefixer-rails (8.2.0)
+    autoprefixer-rails (9.4.9)
       execjs
     backports (3.11.1)
-    bootstrap-sass (3.3.7)
+    bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
+      sassc (>= 2.0.0)
     builder (3.2.3)
     capybara (2.18.0)
       addressable
@@ -103,10 +103,14 @@ GEM
     rack (2.0.6)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
+    rake (12.3.2)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     sass (3.4.25)
+    sassc (2.0.0)
+      ffi (~> 1.9.6)
+      rake
     servolux (0.13.0)
     temple (0.8.0)
     test-unit (3.2.7)
@@ -128,7 +132,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass
+  bootstrap-sass (~> 3.4.1)
   builder
   capybara
   middleman (>= 4.0.0)
@@ -137,4 +141,4 @@ DEPENDENCIES
   test-unit
 
 BUNDLED WITH
-   1.16.1
+   1.17.3

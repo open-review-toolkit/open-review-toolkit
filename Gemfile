@@ -4,7 +4,7 @@ gem 'nokogiri'
 
 gem 'middleman', '>= 4.0.0'
 gem 'builder'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'capybara'
 gem 'poltergeist'
 
